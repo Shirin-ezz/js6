@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Problem 6 - Interactive Count Function</title>
+    <title>Problem 6 - Interactive Count Function with Colors</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #2c3e50; /* Dark Blue */
+        }
         #answer {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
+            color: #2980b9; /* Bright Blue */
             margin-top: 20px;
+        }
+        .number-list {
+            color: #16a085; /* Green */
+        }
+        .result {
+            color: #e74c3c; /* Red */
+        }
+        .threshold {
+            color: #f39c12; /* Orange */
         }
     </style>
 </head>
 <body>
-    <h1>Interactive Count Function Example</h1>
+    <h1>Interactive Count Function Example with Colors</h1>
 
     <!-- Create a div with id = "answer" for displaying results -->
     <div id="answer"></div>
@@ -35,7 +51,7 @@
             
             // Check if the user provided a valid input
             if (userInput === null || userInput.trim() === "") {
-                document.getElementById("answer").innerHTML = "No input provided.";
+                document.getElementById("answer").innerHTML = "<span class='result'>No input provided.</span>";
                 return;
             }
 
@@ -44,7 +60,7 @@
 
             // Validate that all inputs are numbers
             if (numbers.some(isNaN)) {
-                document.getElementById("answer").innerHTML = "Please enter only numeric values separated by commas.";
+                document.getElementById("answer").innerHTML = "<span class='result'>Please enter only numeric values separated by commas.</span>";
                 return;
             }
 
@@ -54,16 +70,18 @@
 
             // Validate that the threshold is a number
             if (isNaN(threshold)) {
-                document.getElementById("answer").innerHTML = "Please enter a valid numeric threshold.";
+                document.getElementById("answer").innerHTML = "<span class='result'>Please enter a valid numeric threshold.</span>";
                 return;
             }
 
             // Call the count() function with the array and threshold
             let result = count(numbers, threshold);
 
-            // Display the result in the <div> with id = "answer"
+            // Display the result in the <div> with id = "answer", using different colors for parts of the message
             document.getElementById("answer").innerHTML = 
-                `You entered the numbers: [${numbers.join(", ")}]<br>Number of items less than ${threshold}: ${result}`;
+                `You entered the numbers: <span class='number-list'>[${numbers.join(", ")}]</span><br>
+                 Number of items less than <span class='threshold'>${threshold}</span>: 
+                 <span class='result'>${result}</span>`;
         }
 
         // Call testCount() when the page loads to interact with the user
