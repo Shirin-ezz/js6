@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Problem 6 - Interactive Count Function with Colors and Line Spacing</title>
+    <title>Problem 6 - Count Function</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.5; /* Increase line height for body text */
+            line-height: 1.5; 
         }
         h1 {
-            color: #2c3e50; /* Dark Blue */
-            margin-bottom: 20px; /* Add space below the heading */
+            color: #450920; 
+            margin-bottom: 20px; 
         }
         #answer {
             font-size: 20px;
             font-weight: bold;
-            color: #2980b9; /* Bright Blue */
+            color: #800f2f; 
             margin-top: 20px;
-            line-height: 1.8; /* Increase line height for better spacing */
+            line-height: 1.8; 
         }
         .number-list {
-            color: #16a085; /* Green */
+            color: #da627d; 
         }
         .result {
-            color: #e74c3c; /* Red */
+            color: #2e294e; 
         }
         .threshold {
-            color: #f39c12; /* Orange */
+            color: #da627d; 
         }
-        /* Additional styling for paragraphs and line spacing */
+
         #answer p {
-            margin: 15px 0; /* Add vertical spacing between paragraphs */
+            margin: 15px 0; 
         }
     </style>
 </head>
@@ -51,9 +51,9 @@
             return count;
         }
 
-        // Function to get user input and display the results dynamically
+        // Function to get user input
         function testCount() {
-            // Prompt the user to enter a series of numbers separated by commas
+            // Prompt the user to enter numbers
             let userInput = prompt("Enter a series of numbers separated by commas (e.g., 3, 55, 30, 28, 9, 12):");
             
             // Check if the user provided a valid input
@@ -71,11 +71,11 @@
                 return;
             }
 
-            // Prompt the user to enter a threshold value
+            // Prompt the user to enter a number
             let thresholdInput = prompt("Enter a threshold value:");
             let threshold = parseFloat(thresholdInput);
 
-            // Validate that the threshold is a number
+            // Validate that the number
             if (isNaN(threshold)) {
                 document.getElementById("answer").innerHTML = "<span class='result'>Please enter a valid numeric threshold.</span>";
                 return;
@@ -84,7 +84,7 @@
             // Call the count() function with the array and threshold
             let result = count(numbers, threshold);
 
-            // Display the result in the <div> with id = "answer", using different colors for parts of the message
+            // Display the result in the <div> with id = "answer"
             document.getElementById("answer").innerHTML = 
                 `<p>You entered the numbers: <span class='number-list'>[${numbers.join(", ")}]</span></p>
                  <p>Number of items less than <span class='threshold'>${threshold}</span>: 
