@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Problem 6 - Count Function</title>
+    <title>Problem 6 - Interactive Count Function with Colors and Line Spacing</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            line-height: 1.5; /* Increase line height for body text */
         }
         h1 {
-            color: #ae2012; 
+            color: #2c3e50; /* Dark Blue */
+            margin-bottom: 20px; /* Add space below the heading */
         }
         #answer {
             font-size: 20px;
             font-weight: bold;
-            color: #000000; 
+            color: #2980b9; /* Bright Blue */
             margin-top: 20px;
+            line-height: 1.8; /* Increase line height for better spacing */
         }
         .number-list {
-            color: #bb3e03; 
+            color: #16a085; /* Green */
         }
         .result {
-            color: #ee9b00; 
+            color: #e74c3c; /* Red */
         }
         .threshold {
-            color: #bb3e03; 
+            color: #f39c12; /* Orange */
+        }
+        /* Additional styling for paragraphs and line spacing */
+        #answer p {
+            margin: 15px 0; /* Add vertical spacing between paragraphs */
         }
     </style>
 </head>
 <body>
-    <h1>Interactive Count Function Example with Colors</h1>
+    <h1>Interactive Count Function Example with Colors and Spacing</h1>
 
     <!-- Create a div with id = "answer" for displaying results -->
     <div id="answer"></div>
@@ -79,9 +86,9 @@
 
             // Display the result in the <div> with id = "answer", using different colors for parts of the message
             document.getElementById("answer").innerHTML = 
-                `You entered the numbers: <span class='number-list'>[${numbers.join(", ")}]</span><br>
-                 Number of items less than <span class='threshold'>${threshold}</span>: 
-                 <span class='result'>${result}</span>`;
+                `<p>You entered the numbers: <span class='number-list'>[${numbers.join(", ")}]</span></p>
+                 <p>Number of items less than <span class='threshold'>${threshold}</span>: 
+                 <span class='result'>${result}</span></p>`;
         }
 
         // Call testCount() when the page loads to interact with the user
