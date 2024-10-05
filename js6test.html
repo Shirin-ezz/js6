@@ -1,175 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JS6 - Count Function</title>
+    <title>Problem 6 - Count Function</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 30px;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        label {
-            display: block;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 8px 12px;
-            margin-top: 5px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            margin-top: 20px;
-            padding: 10px 15px;
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-        button:hover {
-            background-color: #1558b0;
-        }
+        /* Optional styling for the result div */
         #answer {
-            margin-top: 25px;
-            padding: 15px;
-            border: 2px solid #1a73e8;
-            border-radius: 5px;
-            background-color: #e8f0fe;
-            font-size: 1.1em;
-            min-height: 50px;
-        }
-        .error {
-            color: red;
+            font-size: 18px;
             font-weight: bold;
+            margin-top: 20px;
         }
     </style>
-    <script type="text/javascript">
-        /**
-         * Function to count the number of items in an array that are less than a given value.
-         * @param {number[]} array - The array of numbers to evaluate.
-         * @param {number} value - The value to compare against.
-         * @returns {number} - The count of items less than the specified value.
-         */
-        function count(array, value) {
-            let counter = 0;
-            for (let i = 0; i < array.length; i++) {
-                if (array[i] < value) {
-                    counter++;
-                }
-            }
-            return counter;
-        }
-
-        /**
-         * Function to test the 'count' function.
-         * It creates an array, calls 'count()', and displays the result in the 'answer' div.
-         * Additionally, it allows user interaction for dynamic input.
-         */
-        function testCount() {
-            // Retrieve user inputs
-            const arrayInput = document.getElementById('arrayInput').value.trim();
-            const valueInput = document.getElementById('valueInput').value.trim();
-
-            // Validate the array input
-            if (arrayInput === "") {
-                displayError("Please enter a valid array of numbers separated by commas.");
-                return;
-            }
-
-            // Split the array input string into an array of strings, then convert to numbers
-            const arrayStrings = arrayInput.split(',');
-            const numbersArray = arrayStrings.map(num => parseFloat(num.trim()));
-
-            // Check for invalid numbers in the array
-            for (let i = 0; i < numbersArray.length; i++) {
-                if (isNaN(numbersArray[i])) {
-                    displayError(`Invalid number detected at position ${i + 1}: "${arrayStrings[i].trim()}"`);
-                    return;
-                }
-            }
-
-            // Validate the comparison value
-            const comparisonValue = parseFloat(valueInput);
-            if (isNaN(comparisonValue)) {
-                displayError("Please enter a valid numerical comparison value.");
-                return;
-            }
-
-            // Call the 'count' function with the validated array and comparison value
-            const result = count(numbersArray, comparisonValue);
-
-            // Prepare the display message
-            const message = `Number of items in [${numbersArray.join(', ')}] less than ${comparisonValue}: <strong>${result}</strong>`;
-
-            // Display the result in the 'answer' div
-            document.getElementById('answer').innerHTML = message;
-        }
-
-        /**
-         * Helper function to display error messages in the 'answer' div.
-         * @param {string} errorMsg - The error message to display.
-         */
-        function displayError(errorMsg) {
-            document.getElementById('answer').innerHTML = `<span class="error">${errorMsg}</span>`;
-        }
-
-        /**
-         * Function to run a predefined test upon page load.
-         * This demonstrates the 'count' function without user interaction.
-         */
-        function predefinedTestCount() {
-            // Hard-coded array and value as per the problem statement
-            const numbersArray = [3, 55, 30, 28, 9, 12];
-            const comparisonValue = 10;
-
-            // Call the 'count' function with the array and value
-            const result = count(numbersArray, comparisonValue);
-
-            // Prepare the display message
-            const message = `Number of items in [${numbersArray.join(', ')}] less than ${comparisonValue}: ${result}`;
-
-            // Display the result in the 'answer' div
-            document.getElementById('answer').innerText = message;
-        }
-
-        // Execute 'predefinedTestCount' after the page has fully loaded
-        window.onload = function() {
-            predefinedTestCount();
-        };
-    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Interactive Count Function</h1>
-        
-        <!-- Part a) - Div with id="answer" -->
-        <div id="answer">Result will appear here.</div>
+    <h1>Count Function Example</h1>
 
-        <!-- User Input Section -->
-        <label for="arrayInput">Enter an array of numbers (separated by commas):</label>
-        <input type="text" id="arrayInput" placeholder="e.g., 3, 55, 30, 28, 9, 12">
+    <!-- Part a: Create a div with id = "answer" -->
+    <div id="answer"></div>
 
-        <label for="valueInput">Enter the comparison value:</label>
-        <input type="number" id="valueInput" placeholder="e.g., 10">
+    <script>
+        // Part b: Create a function called count()
+        function count(array, value) {
+            let count = 0;  // Initialize count
 
-        <button onclick="testCount()">Count Items Less Than Value</button>
-    </div>
+            // Iterate through the array and count items less than the given value
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] < value) {
+                    count++;  // Increment count if item is less than value
+                }
+            }
+
+            return count;  // Return the count
+        }
+
+        // Part c: Create a function called testCount()
+        function testCount() {
+            // Create an array and a value for testing
+            let numbers = [3, 55, 30, 28, 9, 12];  // Hard-coded array of numbers
+            let threshold = 10;  // Hard-coded value for threshold
+
+            // Call count() function with the array and value
+            let result = count(numbers, threshold);
+
+            // Display the result in the <div> with id = "answer"
+            document.getElementById("answer").innerHTML = `Number of items less than ${threshold}: ${result}`;
+        }
+
+        // Call testCount() from the script
+        testCount();
+    </script>
 </body>
 </html>
