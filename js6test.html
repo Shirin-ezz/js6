@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Problem 6 - Count Function</title>
+    <title>Problem 6 - Interactive Count Function</title>
     <style>
-        /* Optional styling for the result div */
         #answer {
             font-size: 18px;
             font-weight: bold;
@@ -12,40 +11,62 @@
     </style>
 </head>
 <body>
-    <h1>Count Function Example</h1>
+    <h1>Interactive Count Function Example</h1>
 
-    <!-- Part a: Create a div with id = "answer" -->
+    <!-- Create a div with id = "answer" for displaying results -->
     <div id="answer"></div>
 
     <script>
-        // Part b: Create a function called count()
+        // Function to count items in the array that are less than the given value
         function count(array, value) {
-            let count = 0;  // Initialize count
-
-            // Iterate through the array and count items less than the given value
+            let count = 0;
             for (let i = 0; i < array.length; i++) {
                 if (array[i] < value) {
-                    count++;  // Increment count if item is less than value
+                    count++;
                 }
             }
-
-            return count;  // Return the count
+            return count;
         }
 
-        // Part c: Create a function called testCount()
+        // Function to get user input and display the results dynamically
         function testCount() {
-            // Create an array and a value for testing
-            let numbers = [3, 55, 30, 28, 9, 12];  // Hard-coded array of numbers
-            let threshold = 10;  // Hard-coded value for threshold
+            // Prompt the user to enter a series of numbers separated by commas
+            let userInput = prompt("Enter a series of numbers separated by commas (e.g., 3, 55, 30, 28, 9, 12):");
+            
+            // Check if the user provided a valid input
+            if (userInput === null || userInput.trim() === "") {
+                document.getElementById("answer").innerHTML = "No input provided.";
+                return;
+            }
 
-            // Call count() function with the array and value
+            // Convert the input string into an array of numbers
+            let numbers = userInput.split(",").map(Number);
+
+            // Validate that all inputs are numbers
+            if (numbers.some(isNaN)) {
+                document.getElementById("answer").innerHTML = "Please enter only numeric values separated by commas.";
+                return;
+            }
+
+            // Prompt the user to enter a threshold value
+            let thresholdInput = prompt("Enter a threshold value:");
+            let threshold = parseFloat(thresholdInput);
+
+            // Validate that the threshold is a number
+            if (isNaN(threshold)) {
+                document.getElementById("answer").innerHTML = "Please enter a valid numeric threshold.";
+                return;
+            }
+
+            // Call the count() function with the array and threshold
             let result = count(numbers, threshold);
 
             // Display the result in the <div> with id = "answer"
-            document.getElementById("answer").innerHTML = `Number of items less than ${threshold}: ${result}`;
+            document.getElementById("answer").innerHTML = 
+                `You entered the numbers: [${numbers.join(", ")}]<br>Number of items less than ${threshold}: ${result}`;
         }
 
-        // Call testCount() from the script
+        // Call testCount() when the page loads to interact with the user
         testCount();
     </script>
 </body>
